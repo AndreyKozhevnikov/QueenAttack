@@ -158,7 +158,7 @@ namespace QueenAttack.Classes {
             int r = queenPoint.Row;
             int c = queenPoint.Column;
 
-            while(r < n - 1 && c > 0) {
+            while(r < n && c > 1) {
                 r++;
                 c--;
                 var cnt = obstacles.Where(x => x[0] == r && x[1] == c).Count();
