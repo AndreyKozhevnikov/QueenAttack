@@ -321,5 +321,67 @@ namespace QueenAttack.Tests {
             Assert.AreEqual(0, res);
         }
     }
+    [TestFixture]
+    public class L5Test {
+
+
+        [Test]
+        public void Get() {
+            //arrange
+            var s = new Solver();
+            var q = new Point(2, 3);
+            //act
+            var res = s.GetL5(q, 5, new ObstaclesHolder().Result);
+            //assert
+            Assert.AreEqual(1, res);
+        }
+        [Test]
+        public void Get_1() {
+            //arrange
+            var s = new Solver();
+            var q = new Point(2, 4);
+            //act
+            var res = s.GetL5(q, 5, new ObstaclesHolder().Result);
+            //assert
+            Assert.AreEqual(0, res);
+        }
+        [Test]
+        public void Get_Obstracle() {
+            //arrange
+            var s = new Solver();
+            var q = new Point(2, 2);
+            var obs = new ObstaclesHolder();
+            obs.Add(3, 3);
+            //act
+            var res = s.GetL5(q, 5, obs.Result);
+            //assert
+            Assert.AreEqual(0, res);
+        }
+        [Test]
+        public void Get_Obstracle1() {
+            //arrange
+            var s = new Solver();
+            var q = new Point(2, 2);
+            var obs = new ObstaclesHolder();
+            obs.Add(4, 4);
+            //act
+            var res = s.GetL5(q, 5, obs.Result);
+            //assert
+            Assert.AreEqual(1, res);
+        }
+
+        [Test]
+        public void Get_Obstracle2() {
+            //arrange
+            var s = new Solver();
+            var q = new Point(2, 2);
+            var obs = new ObstaclesHolder();
+            obs.Add(1, 3);
+            //act
+            var res = s.GetL5(q, 5, obs.Result);
+            //assert
+            Assert.AreEqual(2, res);
+        }
+    }
 
 }

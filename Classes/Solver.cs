@@ -27,6 +27,8 @@ namespace QueenAttack.Classes {
             var l4Sum = GetL4(queenPoint, n, obstacles);
             allSum += l4Sum;
 
+            var l5Sum = GetL5(queenPoint, n, obstacles);
+            allSum += l5Sum;
 
             return allSum;
         }
@@ -102,6 +104,23 @@ namespace QueenAttack.Classes {
 
             while(r > 0 && c < n - 1) {
                 r--;
+                c++;
+                var cnt = obstacles.Where(x => x[0] == r && x[1] == c).Count();
+                if(cnt > 0) {
+                    break;
+                }
+                res++;
+            }
+            return res;
+        }
+
+        public int GetL5(Point queenPoint, int n, List<List<int>> obstacles) {
+            int res = 0;
+            int r = queenPoint.Row;
+            int c = queenPoint.Column;
+
+            while(r < n-1 && c < n - 1) {
+                r++;
                 c++;
                 var cnt = obstacles.Where(x => x[0] == r && x[1] == c).Count();
                 if(cnt > 0) {
