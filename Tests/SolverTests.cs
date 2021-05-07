@@ -26,7 +26,10 @@ namespace QueenAttack.Tests {
             Assert.AreEqual(11, res);
 
         }
+    }
 
+    [TestFixture]
+    public class L0Test {
         [Test]
         public void Get0() {
             //arrange
@@ -50,7 +53,7 @@ namespace QueenAttack.Tests {
             //arrange
             var s = new Solver();
             var obs = new ObstaclesHolder();
-            obs.Add(2,1);
+            obs.Add(2, 1);
             //act
             var res = s.GetL0(new Point(2, 3), 5, obs.Result);
             //assert
@@ -67,6 +70,10 @@ namespace QueenAttack.Tests {
             //assert
             Assert.AreEqual(0, res);
         }
+    }
+    [TestFixture]
+    public class L1Test {
+
 
         [Test]
         public void Get1() {
@@ -97,5 +104,62 @@ namespace QueenAttack.Tests {
             //assert
             Assert.AreEqual(0, res);
         }
+        [Test]
+        public void Get0_Obstracle1() {
+            //arrange
+            var s = new Solver();
+            var obs = new ObstaclesHolder();
+            obs.Add(2, 1);
+            //act
+            var res = s.GetL0(new Point(2, 3), 5, obs.Result);
+            //assert
+            Assert.AreEqual(1, res);
+        }
     }
+    [TestFixture]
+    public class L2Test {
+
+
+        [Test]
+        public void Get() {
+            //arrange
+            var s = new Solver();
+            //act
+            var res = s.GetL2(new Point(2, 3), 5, new ObstaclesHolder().Result);
+            //assert
+            Assert.AreEqual(2, res);
+        }
+        [Test]
+        public void Get_1() {
+            //arrange
+            var s = new Solver();
+            //act
+            var res = s.GetL2(new Point(0, 3), 5, new ObstaclesHolder().Result);
+            //assert
+            Assert.AreEqual(0, res);
+        }
+        [Test]
+        public void Get_Obstracle() {
+            //arrange
+            var s = new Solver();
+            var obs = new ObstaclesHolder();
+            obs.Add(1, 3);
+            //act
+            var res = s.GetL2(new Point(2, 3), 5, obs.Result);
+            //assert
+            Assert.AreEqual(0, res);
+        }
+        [Test]
+        public void Get0_Obstracle1() {
+            //arrange
+            var s = new Solver();
+            var obs = new ObstaclesHolder();
+            obs.Add(0, 3);
+            //act
+            var res = s.GetL2(new Point(2, 3), 5, obs.Result);
+            //assert
+            Assert.AreEqual(1, res);
+        }
+    }
+
 }
