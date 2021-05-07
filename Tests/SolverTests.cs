@@ -41,7 +41,7 @@ namespace QueenAttack.Tests {
             //arrange
             var s = new Solver();
             //act
-            var res = s.GetL0(new Point(2, 0), 5, null);
+            var res = s.GetL0(new Point(2, 0), 5, new ObstaclesHolder().Result);
             //assert
             Assert.AreEqual(0, res);
         }
@@ -55,6 +55,47 @@ namespace QueenAttack.Tests {
             var res = s.GetL0(new Point(2, 3), 5, obs.Result);
             //assert
             Assert.AreEqual(1, res);
+        }
+        [Test]
+        public void Get0_Obstracle1() {
+            //arrange
+            var s = new Solver();
+            var obs = new ObstaclesHolder();
+            obs.Add(2, 2);
+            //act
+            var res = s.GetL0(new Point(2, 3), 5, obs.Result);
+            //assert
+            Assert.AreEqual(0, res);
+        }
+
+        [Test]
+        public void Get1() {
+            //arrange
+            var s = new Solver();
+            //act
+            var res = s.GetL1(new Point(2, 3), 5, new ObstaclesHolder().Result);
+            //assert
+            Assert.AreEqual(2, res);
+        }
+        [Test]
+        public void Get1_1() {
+            //arrange
+            var s = new Solver();
+            //act
+            var res = s.GetL1(new Point(0, 1), 5, new ObstaclesHolder().Result);
+            //assert
+            Assert.AreEqual(0, res);
+        }
+        [Test]
+        public void Get1_Obstracle() {
+            //arrange
+            var s = new Solver();
+            var obs = new ObstaclesHolder();
+            obs.Add(1, 2);
+            //act
+            var res = s.GetL1(new Point(2, 3), 5, obs.Result);
+            //assert
+            Assert.AreEqual(0, res);
         }
     }
 }
