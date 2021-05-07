@@ -162,7 +162,7 @@ namespace QueenAttack.Tests {
             //arrange
             var s = new Solver();
             //act
-            var res = s.GetL2(new Point(2, 3), 5, new ObstaclesHolder().Result);
+            var res = s.GetL2(new Point(3, 4), 5, new ObstaclesHolder().Result);
             //assert
             Assert.AreEqual(2, res);
         }
@@ -171,7 +171,7 @@ namespace QueenAttack.Tests {
             //arrange
             var s = new Solver();
             //act
-            var res = s.GetL2(new Point(0, 3), 5, new ObstaclesHolder().Result);
+            var res = s.GetL2(new Point(1, 4), 5, new ObstaclesHolder().Result);
             //assert
             Assert.AreEqual(0, res);
         }
@@ -180,9 +180,9 @@ namespace QueenAttack.Tests {
             //arrange
             var s = new Solver();
             var obs = new ObstaclesHolder();
-            obs.Add(1, 3);
+            obs.Add(2, 4);
             //act
-            var res = s.GetL2(new Point(2, 3), 5, obs.Result);
+            var res = s.GetL2(new Point(3, 4), 5, obs.Result);
             //assert
             Assert.AreEqual(0, res);
         }
@@ -191,9 +191,9 @@ namespace QueenAttack.Tests {
             //arrange
             var s = new Solver();
             var obs = new ObstaclesHolder();
-            obs.Add(0, 3);
+            obs.Add(1, 4);
             //act
-            var res = s.GetL2(new Point(2, 3), 5, obs.Result);
+            var res = s.GetL2(new Point(3, 4), 5, obs.Result);
             //assert
             Assert.AreEqual(1, res);
         }
@@ -202,9 +202,9 @@ namespace QueenAttack.Tests {
             //arrange
             var s = new Solver();
             var obs = new ObstaclesHolder();
-            obs.Add(0, 0);
+            obs.Add(1, 1);
             //act
-            var res = s.GetL2(new Point(2, 3), 5, obs.Result);
+            var res = s.GetL2(new Point(3, 4), 5, obs.Result);
             //assert
             Assert.AreEqual(2, res);
         }
