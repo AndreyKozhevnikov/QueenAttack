@@ -219,7 +219,7 @@ namespace QueenAttack.Tests {
             //arrange
             var s = new Solver();
             //act
-            var res = s.GetL3(new Point(2, 3), 5, new ObstaclesHolder().Result);
+            var res = s.GetL3(new Point(3, 4), 5, new ObstaclesHolder().Result);
             //assert
             Assert.AreEqual(1, res);
         }
@@ -227,7 +227,7 @@ namespace QueenAttack.Tests {
         public void Get_1() {
             //arrange
             var s = new Solver();
-            var q = new Point(2, 4);
+            var q = new Point(3, 5);
             //act
             var res = s.GetL3(q, 5, new ObstaclesHolder().Result);
             //assert
@@ -238,8 +238,8 @@ namespace QueenAttack.Tests {
             //arrange
             var s = new Solver();
             var obs = new ObstaclesHolder();
-            obs.Add(2, 4);
-            var q = new Point(2, 3);
+            obs.Add(3, 5);
+            var q = new Point(3, 4);
             //act
             var res = s.GetL3(q, 5, obs.Result);
             //assert
@@ -250,8 +250,8 @@ namespace QueenAttack.Tests {
             //arrange
             var s = new Solver();
             var obs = new ObstaclesHolder();
-            obs.Add(2, 3);
-            var q = new Point(2, 1);
+            obs.Add(3, 4);
+            var q = new Point(3, 2);
             //act
             var res = s.GetL3(q, 5, obs.Result);
             //assert
@@ -263,8 +263,8 @@ namespace QueenAttack.Tests {
             //arrange
             var s = new Solver();
             var obs = new ObstaclesHolder();
-            obs.Add(1, 3);
-            var q = new Point(2, 2);
+            obs.Add(2, 4);
+            var q = new Point(3, 3);
             //act
             var res = s.GetL3(q, 5, obs.Result);
             //assert
