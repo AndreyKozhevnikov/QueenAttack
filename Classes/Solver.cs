@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace QueenAttack.Classes {
     class Solver {
-
         public int Solve(int n, int k, int r_q, int c_q, List<List<int>> obstacles) {
             var allSum = 0;
 
@@ -44,7 +43,7 @@ namespace QueenAttack.Classes {
             int r = queenPoint.Row;
             int c = queenPoint.Column;
 
-            while(c > 0) {
+            while(c > 1) {
                 c--;
                 var cnt = obstacles.Where(x => x[0] == r && x[1] == c).Count();
                 if(cnt > 0) {
@@ -59,7 +58,7 @@ namespace QueenAttack.Classes {
             int res = 0;
             int r = queenPoint.Row;
             int c = queenPoint.Column;
-            while(r > 0) {
+            while(r > 1) {
                 r--;
                 var cnt = obstacles.Where(x => x[0] == r && x[1] == c).Count();
                 if(cnt > 0) {
@@ -108,7 +107,7 @@ namespace QueenAttack.Classes {
             int r = queenPoint.Row;
             int c = queenPoint.Column;
 
-            while(r > 0 && c > 0) {
+            while(r > 1 && c > 1) {
                 r--;
                 c--;
                 var cnt = obstacles.Where(x => x[0] == r && x[1] == c).Count();
