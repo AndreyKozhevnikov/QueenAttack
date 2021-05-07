@@ -74,7 +74,7 @@ namespace QueenAttack.Classes {
             int r = queenPoint.Row;
             int c = queenPoint.Column;
 
-            while(c < n ) {
+            while(c < n) {
                 c++;
                 var cnt = obstacles.Where(x => x[0] == r && x[1] == c).Count();
                 if(cnt > 0) {
@@ -124,7 +124,7 @@ namespace QueenAttack.Classes {
             int r = queenPoint.Row;
             int c = queenPoint.Column;
 
-            while(r > 1 && c < n ) {
+            while(r > 1 && c < n) {
                 r--;
                 c++;
                 var cnt = obstacles.Where(x => x[0] == r && x[1] == c).Count();
@@ -141,7 +141,7 @@ namespace QueenAttack.Classes {
             int r = queenPoint.Row;
             int c = queenPoint.Column;
 
-            while(r < n-1 && c < n - 1) {
+            while(r < n && c < n) {
                 r++;
                 c++;
                 var cnt = obstacles.Where(x => x[0] == r && x[1] == c).Count();
@@ -158,7 +158,7 @@ namespace QueenAttack.Classes {
             int r = queenPoint.Row;
             int c = queenPoint.Column;
 
-            while(r < n - 1 && c >0) {
+            while(r < n - 1 && c > 0) {
                 r++;
                 c--;
                 var cnt = obstacles.Where(x => x[0] == r && x[1] == c).Count();
