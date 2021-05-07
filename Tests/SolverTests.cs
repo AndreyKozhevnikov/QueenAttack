@@ -9,21 +9,21 @@ using System.Threading.Tasks;
 namespace QueenAttack.Tests {
     [TestFixture]
     public class SolverTests {
-        [Ignore]
+        
         [Test]
         public void SolveTest() {
             //arrange
             var s = new Solver();
 
             var obs = new ObstaclesHolder();
-            obs.Add(1, 2);
+            obs.Add(4, 3);
             //act
-            var res = s.Solve(5, 1, 2, 3, obs.Result);
+            var res = s.Solve(5, 1, 3, 4, obs.Result);
             //assert
             Assert.AreEqual(12, res);
 
         }
-        [Ignore]
+        
         [Test]
         public void SolveTest_1() {
             //arrange
