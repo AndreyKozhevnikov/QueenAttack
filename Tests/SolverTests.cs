@@ -383,5 +383,66 @@ namespace QueenAttack.Tests {
             Assert.AreEqual(2, res);
         }
     }
+    [TestFixture]
+    public class L6Test {
 
+
+        [Test]
+        public void Get() {
+            //arrange
+            var s = new Solver();
+            var q = new Point(2, 3);
+            //act
+            var res = s.GetL6(q, 5, new ObstaclesHolder().Result);
+            //assert
+            Assert.AreEqual(2, res);
+        }
+        [Test]
+        public void Get_1() {
+            //arrange
+            var s = new Solver();
+            var q = new Point(4, 3);
+            //act
+            var res = s.GetL6(q, 5, new ObstaclesHolder().Result);
+            //assert
+            Assert.AreEqual(0, res);
+        }
+        [Test]
+        public void Get_Obstracle() {
+            //arrange
+            var s = new Solver();
+            var q = new Point(2, 2);
+            var obs = new ObstaclesHolder();
+            obs.Add(3, 2);
+            //act
+            var res = s.GetL6(q, 5, obs.Result);
+            //assert
+            Assert.AreEqual(0, res);
+        }
+        [Test]
+        public void Get_Obstracle1() {
+            //arrange
+            var s = new Solver();
+            var q = new Point(2, 2);
+            var obs = new ObstaclesHolder();
+            obs.Add(4, 2);
+            //act
+            var res = s.GetL6(q, 5, obs.Result);
+            //assert
+            Assert.AreEqual(1, res);
+        }
+
+        [Test]
+        public void Get_Obstracle2() {
+            //arrange
+            var s = new Solver();
+            var q = new Point(2, 2);
+            var obs = new ObstaclesHolder();
+            obs.Add(3, 0);
+            //act
+            var res = s.GetL6(q, 5, obs.Result);
+            //assert
+            Assert.AreEqual(2, res);
+        }
+    }
 }
