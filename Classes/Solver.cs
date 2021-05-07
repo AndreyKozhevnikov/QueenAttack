@@ -21,15 +21,20 @@ namespace QueenAttack.Classes {
             var l2Sum = GetL2(queenPoint, n, obstacles);
             allSum += l2Sum;
 
+            var l3Sum = GetL3(queenPoint, n, obstacles);
+            allSum += l3Sum;
+
             return allSum;
         }
 
         public int GetL0(Point queenPoint, int n, List<List<int>> obstacles) {
             int res = 0;
+            int r = queenPoint.Row;
             int c = queenPoint.Column;
+
             while(c > 0) {
                 c--;
-                var cnt = obstacles.Where(x => x[1] == c).Count();
+                var cnt = obstacles.Where(x => x[0] == r && x[1] == c).Count();
                 if(cnt > 0) {
                     break;
                 }
@@ -40,9 +45,10 @@ namespace QueenAttack.Classes {
         public int GetL2(Point queenPoint, int n, List<List<int>> obstacles) {
             int res = 0;
             int r = queenPoint.Row;
+            int c = queenPoint.Column;
             while(r > 0) {
                 r--;
-                var cnt = obstacles.Where(x => x[0] == r).Count();
+                var cnt = obstacles.Where(x => x[0] == r && x[1] == c).Count();
                 if(cnt > 0) {
                     break;
                 }
@@ -54,13 +60,29 @@ namespace QueenAttack.Classes {
             int res = 0;
             int r = queenPoint.Row;
             int c = queenPoint.Column;
-            
+
             while(r > 0 && c > 0) {
                 r--;
                 c--;
-                var cnt = obstacles.Where(x => x[0] == r).Count();
-                var cnt2 = obstacles.Where(x => x[1] == c).Count();
-                if(cnt > 0 || cnt2 > 0) {
+                var cnt = obstacles.Where(x => x[0] == r && x[1] == c).Count();
+                if(cnt > 0) {
+                    break;
+                }
+                res++;
+            }
+            return res;
+        }
+
+        public int GetL3(Point queenPoint, int n, List<List<int>> obstacles) {
+            int res = 0;
+            int r = queenPoint.Row;
+            int c = queenPoint.Column;
+
+            while(r > 0 && c < n - 1) {
+                r--;
+                c++;
+                var cnt = obstacles.Where(x => x[0] == r && x[1] == c).Count();
+                if(cnt > 0) {
                     break;
                 }
                 res++;
