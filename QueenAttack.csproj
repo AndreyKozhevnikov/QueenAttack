@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\ObstaclesHolder.cs" />
     <Compile Include="Classes\Point.cs" />
     <Compile Include="Classes\Solver.cs" />
     <Compile Include="Program.cs" />

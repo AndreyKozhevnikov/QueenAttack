@@ -11,12 +11,26 @@ namespace QueenAttack.Classes {
             var allSum = 0;
 
             var queenPoint = new Point(r_q, c_q);
-            var l1First = new Point(r_q, 0);
-            var l1Sum = queenPoint.Column - l1First.Column;
-            allSum = allSum + l1Sum;
 
+            var l0Sum = GetL0(queenPoint, n, obstacles);
+            allSum += l0Sum;
 
             return allSum;
+        }
+
+        public int GetL0(Point queenPoint, int n, List<List<int>> obstacles) {
+            int res = 0;
+            int c = queenPoint.Column;
+            while(c > 0) {
+
+                res++;
+                c--;
+                var cnt = obstacles.Where(x => x[0] == c).Count();
+                if(cnt > 0) {
+                    break;
+                }
+            }
+            return res;
         }
     }
 }
