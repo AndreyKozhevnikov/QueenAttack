@@ -56,7 +56,16 @@
     <Compile Include="Classes\Solver.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\L0Test.cs" />
+    <Compile Include="Tests\L1Test.cs" />
+    <Compile Include="Tests\L2Test.cs" />
+    <Compile Include="Tests\L3Test.cs" />
+    <Compile Include="Tests\L4Test.cs" />
+    <Compile Include="Tests\L5Test.cs" />
+    <Compile Include="Tests\L6Test.cs" />
+    <Compile Include="Tests\L7Test.cs" />
     <Compile Include="Tests\SolverTests.cs" />
+    <Compile Include="Tests\SolverV2Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

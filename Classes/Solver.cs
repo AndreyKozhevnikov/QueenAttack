@@ -22,6 +22,31 @@ namespace QueenAttack.Classes {
 
             return allSum;
         }
+
+
+        public Point GetL1Start(Point queenPoint, int n) {
+            return new Point(queenPoint.Row, 1);
+        }
+        public Point GetL3Start(Point queenPoint, int n) {
+            return new Point(1,queenPoint.Column);
+        }
+        public Point GetL5Start(Point queenPoint, int n) {
+            return new Point( queenPoint.Row,n);
+        }
+        public Point GetL7Start(Point queenPoint, int n) {
+            return new Point(5, queenPoint.Column);
+        }
+
+        public Point GetL2Start(Point queenPoint, int n) {
+            if(queenPoint.Row < queenPoint.Column) {
+                var c = queenPoint.Column - queenPoint.Row + 1;
+                return new Point(1, c);
+            } else {
+                var r = queenPoint.Row - queenPoint.Column + 1;
+                return new Point(r, 1);
+            }
+            
+        }
         public int Solve(int n, int k, int r_q, int c_q, List<List<int>> obstacles) {
             return SolveV2(n, k, r_q, c_q, obstacles);
         }
