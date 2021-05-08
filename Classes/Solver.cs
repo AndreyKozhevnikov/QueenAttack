@@ -5,8 +5,27 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace QueenAttack.Classes {
+
+    class SolverV2 {
+        public int SolveV2(int n, int k, int r_q, int c_q, List<List<int>> obstacles) {
+            var allSum = 0;
+
+            return allSum;
+        }
+
+    }
+
+
     class Solver {
+        public int SolveV2(int n, int k, int r_q, int c_q, List<List<int>> obstacles) {
+            var allSum = 0;
+
+            return allSum;
+        }
         public int Solve(int n, int k, int r_q, int c_q, List<List<int>> obstacles) {
+            return SolveV2(n, k, r_q, c_q, obstacles);
+        }
+        public int SolveV1(int n, int k, int r_q, int c_q, List<List<int>> obstacles) {
             var allSum = 0;
 
             var queenPoint = new Point(r_q, c_q);
