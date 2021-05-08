@@ -45,6 +45,15 @@ namespace QueenAttack.Classes {
                 var r = queenPoint.Row - queenPoint.Column + 1;
                 return new Point(r, 1);
             }
+        }
+        public Point GetL4Start(Point queenPoint, int n) {
+            var c = queenPoint.Column + queenPoint.Row-1;
+            if(c <= n) {
+                return new Point(1, c);
+            } else {
+                var diff = c - n;
+                return new Point(1 + diff, n);
+            }
             
         }
         public int Solve(int n, int k, int r_q, int c_q, List<List<int>> obstacles) {

@@ -99,7 +99,7 @@ namespace QueenAttack.Tests {
 
 
         [Test]
-        public void GetL2Start() {
+        public void GetL2Start_0() {
             //arrange
             var s = new Solver();
             var q = new Point(3, 4);
@@ -129,6 +129,35 @@ namespace QueenAttack.Tests {
             Assert.AreEqual(res, new Point(5, 1));
         }
 
-
+        [Test]
+        public void GetL4Start_0() {
+            //arrange
+            var s = new Solver();
+            var q = new Point(3, 4);
+            //act
+            var res = s.GetL4Start(q, 5);
+            //assert
+            Assert.AreEqual(res, new Point(2, 5));
+        }
+        [Test]
+        public void GetL4Start_1() {
+            //arrange
+            var s = new Solver();
+            var q = new Point(2, 3);
+            //act
+            var res = s.GetL4Start(q, 5);
+            //assert
+            Assert.AreEqual(res, new Point(1, 4));
+        }
+        [Test]
+        public void GetL4Start_3() {
+            //arrange
+            var s = new Solver();
+            var q = new Point(1, 5);
+            //act
+            var res = s.GetL4Start(q, 5);
+            //assert
+            Assert.AreEqual(res, new Point(1, 5));
+        }
     }
 }
