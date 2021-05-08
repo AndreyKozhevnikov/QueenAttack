@@ -6,23 +6,40 @@ using System.Threading.Tasks;
 
 namespace QueenAttack.Classes {
 
-    class SolverV2 {
-        public int SolveV2(int n, int k, int r_q, int c_q, List<List<int>> obstacles) {
-            var allSum = 0;
-
-            return allSum;
-        }
-
-    }
+  
 
 
     class Solver {
         public int SolveV2(int n, int k, int r_q, int c_q, List<List<int>> obstacles) {
+            var queen = new Point(r_q, c_q);
             var allSum = 0;
+            List<Point> EndPoints = new List<Point>();
+            EndPoints.Add(GetL1Start(queen, n));
+            EndPoints.Add(GetL2Start(queen, n));
+            EndPoints.Add(GetL3Start(queen, n));
+            EndPoints.Add(GetL4Start(queen, n));
+            EndPoints.Add(GetL5Start(queen, n));
+            EndPoints.Add(GetL6Start(queen, n));
+            EndPoints.Add(GetL7Start(queen, n));
+            EndPoints.Add(GetL8Start(queen, n));
+
+            foreach(var p in EndPoints) {
+                var s = GetTwoPointDiff(queen, p);
+                allSum += s;
+            }
+
 
             return allSum;
         }
 
+        public int GetTwoPointDiff(Point queen, Point ps) {
+            var diff1 = Math.Abs(queen.Row - ps.Row);
+            var diff2 = Math.Abs(queen.Column - ps.Column);
+            var diff3 = Math.Max(diff1, diff2);
+            return diff3;
+
+            
+        }
 
         public Point GetL1Start(Point queenPoint, int n) {
             return new Point(queenPoint.Row, 1);
@@ -34,7 +51,7 @@ namespace QueenAttack.Classes {
             return new Point( queenPoint.Row,n);
         }
         public Point GetL7Start(Point queenPoint, int n) {
-            return new Point(5, queenPoint.Column);
+            return new Point(n, queenPoint.Column);
         }
 
         public Point GetL2Start(Point queenPoint, int n) {
@@ -54,7 +71,28 @@ namespace QueenAttack.Classes {
                 var diff = c - n;
                 return new Point(1 + diff, n);
             }
-            
+        }
+
+        public Point GetL6Start(Point queenPoint, int n) {
+            var rDiff = n - queenPoint.Row;
+            var c = queenPoint.Column + rDiff;
+            if(c <= n) {
+                return new Point(n, c);
+            } else {
+                var diff = c - n;
+                return new Point( n-diff,n);
+            }
+        }
+
+        public Point GetL8Start(Point queenPoint, int n) {
+            var rDiff = n - queenPoint.Row;
+            var c = queenPoint.Column - rDiff;
+            if(c >0) {
+                return new Point(n, c);
+            } else {
+                var diff = c - 1;
+                return new Point(n + diff, 1);
+            }
         }
         public int Solve(int n, int k, int r_q, int c_q, List<List<int>> obstacles) {
             return SolveV2(n, k, r_q, c_q, obstacles);

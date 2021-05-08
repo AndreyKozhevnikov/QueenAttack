@@ -8,9 +8,35 @@ using System.Threading.Tasks;
 
 namespace QueenAttack.Tests {
     [TestFixture]
-    [Ignore]
+    
     public class SolverTests {
+        [Ignore]
+        
+        public void SolveTest_s0() {
+            //arrange
+            var s = new Solver();
 
+            var obs = new ObstaclesHolder();
+            
+            //act
+            var res = s.Solve(5, 1, 3, 4, obs.Result);
+            //assert
+            Assert.AreEqual(14, res);
+        }
+        [Ignore]
+        
+        public void SolveTest_s1() {
+            //arrange
+            var s = new Solver();
+
+            var obs = new ObstaclesHolder();
+
+            //act
+            var res = s.Solve(6, 1, 3, 4, obs.Result);
+            //assert
+            Assert.AreEqual(17, res);
+        }
+        [Ignore]
         [Test]
         public void SolveTest() {
             //arrange
@@ -24,7 +50,7 @@ namespace QueenAttack.Tests {
             Assert.AreEqual(12, res);
 
         }
-
+        [Ignore]
         [Test]
         public void SolveTest_1() {
             //arrange
@@ -40,7 +66,7 @@ namespace QueenAttack.Tests {
             Assert.AreEqual(10, res);
 
         }
-
+        [Ignore]
         [Test]
         public void SolveTest_Time() {
             //arrange
