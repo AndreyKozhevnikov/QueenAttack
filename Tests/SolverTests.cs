@@ -10,8 +10,7 @@ namespace QueenAttack.Tests {
     [TestFixture]
     
     public class SolverTests {
-        [Ignore]
-        
+        [Test]
         public void SolveTest_s0() {
             //arrange
             var s = new Solver();
@@ -23,8 +22,7 @@ namespace QueenAttack.Tests {
             //assert
             Assert.AreEqual(14, res);
         }
-        [Ignore]
-        
+        [Test]
         public void SolveTest_s1() {
             //arrange
             var s = new Solver();
@@ -34,9 +32,9 @@ namespace QueenAttack.Tests {
             //act
             var res = s.Solve(6, 1, 3, 4, obs.Result);
             //assert
-            Assert.AreEqual(17, res);
+            Assert.AreEqual(19, res);
         }
-        [Ignore]
+        
         [Test]
         public void SolveTest() {
             //arrange
@@ -50,7 +48,7 @@ namespace QueenAttack.Tests {
             Assert.AreEqual(12, res);
 
         }
-        [Ignore]
+        
         [Test]
         public void SolveTest_1() {
             //arrange
@@ -66,7 +64,7 @@ namespace QueenAttack.Tests {
             Assert.AreEqual(10, res);
 
         }
-        [Ignore]
+        
         [Test]
         public void SolveTest_Time() {
             //arrange

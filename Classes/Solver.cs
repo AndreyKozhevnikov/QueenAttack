@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QueenAttack.Classes {
 
-  
+
 
 
     class Solver {
@@ -24,7 +24,7 @@ namespace QueenAttack.Classes {
             EndPoints.Add(GetL8Start(queen, n));
 
             foreach(var p in EndPoints) {
-                var s = GetTwoPointDiff(queen, p);
+                var s = GetTwoPointDiff(queen, p, obstacles);
                 allSum += s;
             }
 
@@ -32,23 +32,70 @@ namespace QueenAttack.Classes {
             return allSum;
         }
 
-        public int GetTwoPointDiff(Point queen, Point ps) {
+        public int GetTwoPointDiff(Point queen, Point ps, List<List<int>> obstacles) {
             var diff1 = Math.Abs(queen.Row - ps.Row);
             var diff2 = Math.Abs(queen.Column - ps.Column);
-            var diff3 = Math.Max(diff1, diff2);
-            return diff3;
+            var res = Math.Max(diff1, diff2);
+            foreach(var obs in obstacles) {
+                var o = new Point(obs[0], obs[1]);
+                var isObstacleOnTheLine = IsPointOnTheLine(queen, ps, o);
+                if(isObstacleOnTheLine) {
+                    var obsDiff = GetTwoPointDiff(queen, o, new List<List<int>>());
+                    obsDiff--;
+                    if(obsDiff < res) {
+                        res = obsDiff;
+                    }
+                }
+            }
+            return res;
+        }
 
-            
+
+        public bool IsPointOnTheLine(Point l1, Point l2, Point obs) {
+            bool isSameLine = false;
+            //if(l1.Column == l2.Column) {
+            //    isSameLine= obs.Column == l1.Column;
+            //}
+            if(l1.Row == l2.Row) {
+                isSameLine = obs.Row == l1.Row;
+            } else {
+
+                var m = (l2.Column - l1.Column) / (l2.Row - l1.Row);
+                var b = l1.Column - (m * l1.Row);
+
+                var countColumn = m * obs.Row + b;
+                isSameLine = countColumn == obs.Column;
+            }
+            if(isSameLine) {
+                bool isColumnInSegment = false;
+                bool isRowInSegment = false;
+                if(l1.Column > l2.Column) {
+                    isColumnInSegment = obs.Column <= l1.Column && obs.Column >= l2.Column;
+                } else {
+                    isColumnInSegment = obs.Column >= l1.Column && obs.Column <= l2.Column;
+                }
+                if(l1.Row > l2.Row) {
+                    isRowInSegment = obs.Row <= l1.Row && obs.Row >= l2.Row;
+                } else {
+                    isRowInSegment = obs.Row >= l1.Row && obs.Row <= l2.Row;
+                }
+                return isColumnInSegment && isRowInSegment;
+            }
+            return false;
+
+
+
+
         }
 
         public Point GetL1Start(Point queenPoint, int n) {
             return new Point(queenPoint.Row, 1);
         }
         public Point GetL3Start(Point queenPoint, int n) {
-            return new Point(1,queenPoint.Column);
+            return new Point(1, queenPoint.Column);
         }
         public Point GetL5Start(Point queenPoint, int n) {
-            return new Point( queenPoint.Row,n);
+            return new Point(queenPoint.Row, n);
         }
         public Point GetL7Start(Point queenPoint, int n) {
             return new Point(n, queenPoint.Column);
@@ -64,7 +111,7 @@ namespace QueenAttack.Classes {
             }
         }
         public Point GetL4Start(Point queenPoint, int n) {
-            var c = queenPoint.Column + queenPoint.Row-1;
+            var c = queenPoint.Column + queenPoint.Row - 1;
             if(c <= n) {
                 return new Point(1, c);
             } else {
@@ -80,14 +127,14 @@ namespace QueenAttack.Classes {
                 return new Point(n, c);
             } else {
                 var diff = c - n;
-                return new Point( n-diff,n);
+                return new Point(n - diff, n);
             }
         }
 
         public Point GetL8Start(Point queenPoint, int n) {
             var rDiff = n - queenPoint.Row;
             var c = queenPoint.Column - rDiff;
-            if(c >0) {
+            if(c > 0) {
                 return new Point(n, c);
             } else {
                 var diff = c - 1;
